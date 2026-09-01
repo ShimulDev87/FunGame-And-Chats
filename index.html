@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Monetag Verification Meta Tag (এখান থেকে আপনার Meta Tag টি বসাবেন) -->
+  <!-- <meta name="monetag" content="YOUR_MONETAG_CODE_HERE"> -->
+  
+  <!-- Monetag Ad Script Code (অ্যাপ্রুভ হওয়ার পর জেনারেট করা ডিরেক্ট স্কিপ্টটি এখানে পেস্ট করবেন) -->
+  <!-- <script src="https://alwingulla.com/88/tag.min.js" data-zone="YOUR_ZONE_ID" async data-cfasync="false"></script> -->
+
+  <title>GamePortal - Play & Connect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- নেভিগেশন বার -->
+  <header class="navbar">
+    <div class="logo">🎮 GamePortal</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Games</a>
+      <a href="#">Community</a>
+    </nav>
+    <div id="auth-section">
+      <button id="login-btn" onclick="loginWithGoogle()">Google দিয়ে লগইন</button>
+      <span id="user-info" style="display:none;"></span>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="left-content">
+      
+      <!-- Hero / Featured Banner -->
+      <div class="hero-banner">
+        <span class="featured-badge">🔥 Featured Game of the Day</span>
+        <h1 id="featured-title">Candy Rope 2D</h1>
+      </div>
+
+      <!-- গেইম প্লেয়ার সেকশন -->
+      <section class="game-view">
+        <div class="iframe-wrapper">
+          <!-- Bunny Blitz-এর বিল্ড ফোল্ডারের পাথ এখানে দেওয়া হলো -->
+          <iframe id="game-frame" src="games/Candy Rope 2D/" title="Unity WebGL Game"></iframe>
+        </div>
+        <div class="game-controls">
+          <h2 id="game-title">Candy Rope 2D</h2>
+          <button onclick="toggleFullscreen()">Full Screen ⛶</button>
+        </div>
+      </section>
+
+      <!-- Banner Ad Slot (728x90 Leaderboard) -->
+      <div class="ad-slot banner-ad-slot">
+        <span class="ad-label">Advertisement</span>
+        <!-- Monetag In-Page Push / Banner Ad Script Paste Here -->
+      </div>
+
+      <!-- গেইম ক্যাটালগ সেকশন -->
+      <section class="game-catalog">
+        <h3>Featured Games</h3>
+        <div id="game-grid" class="game-grid">
+          <!-- JS দিয়ে ডাইনামিকালি লোড হবে -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ডান পাশের চ্যাট ও সাইডবার অ্যাড -->
+    <aside class="sidebar-chat">
+      <h3>Live Community Chat</h3>
+      <div id="chat-messages" class="chat-box"></div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="মেসেজ লিখুন...">
+        <button id="send-btn">Send</button>
+      </div>
+
+      <!-- Sidebar Ad Slot (300x250 Medium Rectangle) -->
+      <div class="ad-slot sidebar-ad-slot">
+        <span class="ad-label">Advertisement</span>
+        <!-- Monetag Native / Banner Ad Script Paste Here -->
+      </div>
+    </aside>
+  </main>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+  <script src="app.js"></script>
+
+  <script>
+  // Unity-র ফালতু অ্যালার্ট পপ-আপ ব্লক করার জন্য
+  window.alert = function(message) {
+    console.log("Blocked Alert: ", message);
+  };
+</script>
+</body>
+</html>
