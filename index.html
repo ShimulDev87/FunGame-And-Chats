@@ -35,8 +35,7 @@
       <!-- গেইম প্লেয়ার সেকশন -->
       <section class="game-view">
         <div class="iframe-wrapper">
-          <!-- Bunny Blitz-এর বিল্ড ফোল্ডারের পাথ এখানে দেওয়া হলো -->
-          <iframe id="game-frame" src="games/Candy Rope 2D/" title="Unity WebGL Game"></iframe>
+          <iframe id="game-frame" src="games/candy-rope-2d/index.html" title="Unity WebGL Game"></iframe>
         </div>
         <div class="game-controls">
           <h2 id="game-title">Candy Rope 2D</h2>
@@ -44,10 +43,21 @@
         </div>
       </section>
 
+      <!-- Monetag Direct Link Reward Banner -->
+      <div class="reward-ad-box" style="background: #2a2a40; border: 1px solid #ff4757; border-radius: 8px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; margin: 15px 0;">
+        <div style="color: #fff;">
+          <h4 style="margin: 0; font-size: 1.1rem;">🎁 Daily Bonus Rewards</h4>
+          <p style="margin: 4px 0 0; color: #a4b0be; font-size: 0.85rem;">Click to unlock free in-game coins & extras!</p>
+        </div>
+        <a href="https://omg10.com/4/11702034" target="_blank" style="background: #ff4757; color: #fff; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">
+          Claim Now ⚡
+        </a>
+      </div>
+
       <!-- Banner Ad Slot (728x90 Leaderboard) -->
       <div class="ad-slot banner-ad-slot">
         <span class="ad-label">Advertisement</span>
-        <!-- Monetag In-Page Push / Banner Ad Script Paste Here -->
+        <!-- Monetag Banner Ad Script Paste Here -->
       </div>
 
       <!-- গেইম ক্যাটালগ সেকশন -->
@@ -85,10 +95,10 @@
   <script src="app.js"></script>
 
   <script>
-  // Unity-র ফালতু অ্যালার্ট পপ-আপ ব্লক করার জন্য
-  window.alert = function(message) {
-    console.log("Blocked Alert: ", message);
-  };
-</script>
+    // Unity Alert Block
+    window.alert = function(message) {
+      console.log("Blocked Alert: ", message);
+    };
+  </script>
 </body>
 </html>
