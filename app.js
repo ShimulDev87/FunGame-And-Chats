@@ -106,11 +106,11 @@ const gamesList = [
   },
   {
     id: "game2",
-    title: "Z-Strike: Zombie Shooter",
-    tag: "3D Shooter",
+    title: "Micro Racer 2D",
+    tag: "2D Racing",
     rating: "4.8",
     thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Z-Strike",
-    path: "games/z-strike/index.html"
+    path: "games/micro-racer-2d/index.html"
   }
 ];
 
