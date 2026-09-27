@@ -128,7 +128,7 @@ const gamesList = [
     rating: "4.8",
     thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Micro+Racer+2D",
     path: "games/micro-racer-2d/index.html"
-  }
+  },
   {
     id: "game3",
     title: "Temple Racer 3D",
