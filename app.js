@@ -1,60 +1,77 @@
-// ১. Firebase Configuration (আপনার আসল Credentials গুলো দিয়ে রিপ্লেস করে নিন)
+// ১. Firebase Configuration
 const firebaseConfig = {
-
   apiKey: "AIzaSyC8bpTs6io_EGs7tMipgC6r3J7Gtdn-D9E",
-
   authDomain: "shimul-s-gaming-platform.firebaseapp.com",
-
   projectId: "shimul-s-gaming-platform",
-
   storageBucket: "shimul-s-gaming-platform.firebasestorage.app",
-
   messagingSenderId: "454191228047",
-
   appId: "1:454191228047:web:a06b40409cf8dd46dc7cfa",
-
   measurementId: "G-5R86D91HWT"
-
 };
+
 // ২. Initialize
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 let currentUser = null;
 
-// Google Login & Auth State
+// Google Login Function
 window.loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider).catch(error => console.error("Login Error:", error));
 };
 
+// Logout Function
+window.logoutUser = () => {
+  auth.signOut().then(() => {
+    console.log("Logged out successfully");
+  }).catch(error => console.error("Logout Error:", error));
+};
+
+// Auth State Changed Listener
 auth.onAuthStateChanged(user => {
   const loginBtn = document.getElementById('login-btn');
   const userInfo = document.getElementById('user-info');
+  
   if (user) {
     currentUser = user;
-    loginBtn.style.display = 'none';
-    userInfo.style.display = 'inline-block';
-    userInfo.innerText = `👋 ${user.displayName}`;
+    if (loginBtn) loginBtn.style.display = 'none';
+    if (userInfo) {
+      userInfo.style.display = 'inline-block';
+      userInfo.innerHTML = `👋 ${user.displayName} <button onclick="logoutUser()" style="margin-left:8px; padding:2px 6px; font-size:11px; cursor:pointer;">Logout</button>`;
+    }
   } else {
     currentUser = null;
-    loginBtn.style.display = 'inline-block';
-    userInfo.style.display = 'none';
+    if (loginBtn) loginBtn.style.display = 'inline-block';
+    if (userInfo) {
+      userInfo.style.display = 'none';
+      userInfo.innerHTML = '';
+    }
   }
 });
 
-// Realtime Chat
+// Realtime Chat Listener
 db.collection("global_chat").orderBy("createdAt", "asc").onSnapshot(snapshot => {
   const chatBox = document.getElementById('chat-messages');
   if (!chatBox) return;
+  
   chatBox.innerHTML = '';
   snapshot.forEach(doc => {
     const msg = doc.data();
     const msgDiv = document.createElement('div');
     msgDiv.style.marginBottom = "8px";
-    msgDiv.innerHTML = `<strong style="color:#ff4757;">${msg.user || 'User'}:</strong> ${msg.text}`;
+    
+    const userName = document.createElement('strong');
+    userName.style.color = "#ff4757";
+    userName.textContent = `${msg.user || 'User'}: `;
+    
+    const textNode = document.createTextNode(msg.text || '');
+    
+    msgDiv.appendChild(userName);
+    msgDiv.appendChild(textNode);
     chatBox.appendChild(msgDiv);
   });
+  
   chatBox.scrollTop = chatBox.scrollHeight;
 });
 
@@ -68,7 +85,7 @@ if (sendBtn && chatInput) {
     if (!currentUser) return alert("মেসেজ পাঠাতে প্রথমে গুগল দিয়ে লগইন করুন!");
 
     db.collection("global_chat").add({
-      text: chatInput.value,
+      text: chatInput.value.trim(),
       user: currentUser.displayName,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
@@ -101,7 +118,7 @@ const gamesList = [
     title: "Candy Rope 2D",
     tag: "2D Puzzle",
     rating: "4.9",
-    thumbnail: "https://via.placeholder.com/180x110/ff4757/ffffff?text=Bunny+Blitz",
+    thumbnail: "https://via.placeholder.com/180x110/ff4757/ffffff?text=Candy+Rope+2D",
     path: "games/candy-rope-2d/index.html"
   },
   {
@@ -109,8 +126,16 @@ const gamesList = [
     title: "Micro Racer 2D",
     tag: "2D Racing",
     rating: "4.8",
-    thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Z-Strike",
+    thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Micro+Racer+2D",
     path: "games/micro-racer-2d/index.html"
+  }
+  {
+    id: "game3",
+    title: "Temple Racer 3D",
+    tag: "3D Racing",
+    rating: "4.8",
+    thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Z-Strike",
+    path: "games/temple-racer-3d/index.html"
   }
 ];
 
@@ -137,6 +162,7 @@ function loadGameCatalog() {
     gameGrid.appendChild(card);
   });
 
+  // ডিফল্টভাবে প্রথম গেম সিলেক্ট করা
   if (gamesList.length > 0) playGame(gamesList[0]);
 }
 
@@ -155,5 +181,5 @@ function playGame(game) {
   if (activeCard) activeCard.classList.add('active-game');
 }
 
-// DOM fully loaded হওয়ার পর গেম ক্যাটালগ রেন্ডার
+// DOM fully loaded হওয়ার পর গেম ক্যাটালগ রেন্ডার
 document.addEventListener('DOMContentLoaded', loadGameCatalog);
