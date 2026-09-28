@@ -115,11 +115,13 @@ window.toggleFullscreen = () => {
 const gamesList = [
   {
     id: "game1",
-    title: "Candy Rope 2D",
-    tag: "2D Puzzle",
-    rating: "4.9",
-    thumbnail: "https://via.placeholder.com/180x110/ff4757/ffffff?text=Candy+Rope+2D",
-    path: "games/candy-rope-2d/index.html"
+    title: "Temple Racer 3D",
+    tag: "3D Racing",
+    rating: "4.8",
+    thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Z-Strike",
+    path: "games/temple-racer-3d/index.html"
+
+    
   },
   {
     id: "game2",
@@ -131,11 +133,11 @@ const gamesList = [
   },
   {
     id: "game3",
-    title: "Temple Racer 3D",
-    tag: "3D Racing",
-    rating: "4.8",
-    thumbnail: "https://via.placeholder.com/180x110/2ed573/ffffff?text=Z-Strike",
-    path: "games/temple-racer-3d/index.html"
+    title: "Candy Rope 2D",
+    tag: "2D Puzzle",
+    rating: "4.9",
+    thumbnail: "https://via.placeholder.com/180x110/ff4757/ffffff?text=Candy+Rope+2D",
+    path: "games/candy-rope-2d/index.html"
   }
 ];
 
