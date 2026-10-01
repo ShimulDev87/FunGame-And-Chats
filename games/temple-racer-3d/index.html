@@ -26,7 +26,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=450 height=600 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=450 height=550 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -69,12 +69,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/test 11.loader.js";
+      var loaderUrl = buildUrl + "/new tst 1.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/test 11.data",
-        frameworkUrl: buildUrl + "/test 11.framework.js",
-        codeUrl: buildUrl + "/test 11.wasm",
+        dataUrl: buildUrl + "/new tst 1.data",
+        frameworkUrl: buildUrl + "/new tst 1.framework.js",
+        codeUrl: buildUrl + "/new tst 1.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "RunTime Lab",
         productName: "TEMPLE RACER",
@@ -122,7 +122,7 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
         canvas.style.width = "450px";
-        canvas.style.height = "600px";
+        canvas.style.height = "550px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
