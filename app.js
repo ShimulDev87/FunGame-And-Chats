@@ -139,6 +139,15 @@ const gamesList = [
     thumbnail: "https://via.placeholder.com/180x110/ff4757/ffffff?text=Candy+Rope+2D",
     path: "games/candy-rope-2d/index.html"
   }
+  ,
+  {
+    id: "game4",
+    title: "Fight Arena 3D",
+    tag: "Action or Shooter",
+    rating: "5.0",
+    thumbnail: "https://via.placeholder.com/180x110/ff4757/ffffff?text=Candy+Rope+2D",
+    path: "games/fight-arena-3d/index.html"
+  }
 ];
 
 function loadGameCatalog() {
